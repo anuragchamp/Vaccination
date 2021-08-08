@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DashBoard">
+<Pane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DashBoard">
    <children>
-      <Pane prefHeight="500.0" prefWidth="800.0">
+      <Pane fx:id="child" prefHeight="500.0" prefWidth="800.0">
          <children>
-            <Label fx:id="firstname" layoutX="172.0" layoutY="42.0" prefHeight="44.0" prefWidth="190.0" text="Label" />
-            <Label fx:id="lastname" layoutX="380.0" layoutY="42.0" prefHeight="44.0" prefWidth="153.0" text="Label" />
-            <Label layoutX="24.0" layoutY="42.0" prefHeight="44.0" prefWidth="97.0" text="Name" />
-            <Label fx:id="phonenumber" layoutX="183.0" layoutY="116.0" prefHeight="44.0" prefWidth="153.0" text="enter number" />
-            <Label layoutX="24.0" layoutY="116.0" prefHeight="44.0" prefWidth="97.0" text="Phone Number" />
-            <Button layoutX="661.0" layoutY="42.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="104.0" text="Logout" />
-            <Label layoutX="24.0" layoutY="192.0" prefHeight="44.0" prefWidth="97.0" text="Email" />
-            <Label fx:id="email" layoutX="163.0" layoutY="192.0" prefHeight="44.0" prefWidth="159.0" text="enter email" />
-            <Button layoutX="613.0" layoutY="261.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="138.0" text="Scheduling" />
-            <Button layoutX="617.0" layoutY="321.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="138.0" text="Re-Scheduling" />
-            <Button layoutX="672.0" layoutY="393.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="83.0" text="Cancel" />
+            <Label fx:id="firstname" layoutX="34.0" layoutY="20.0" prefHeight="44.0" prefWidth="190.0" text="Label" />
+            <Label fx:id="lastname" layoutX="192.0" layoutY="20.0" prefHeight="44.0" prefWidth="153.0" text="Label" />
+            <Label fx:id="phonenumber" layoutX="34.0" layoutY="64.0" prefHeight="44.0" prefWidth="153.0" text="enter number" />
+            <Button layoutX="682.0" layoutY="27.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="104.0" text="Logout" />
+            <Label fx:id="email" layoutX="32.0" layoutY="108.0" prefHeight="44.0" prefWidth="321.0" text="enter email" />
+            <Button layoutX="360.0" layoutY="176.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="120.0" text="Scheduling" />
+            <Button layoutX="533.0" layoutY="173.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="127.0" text="Re-Scheduling" />
+            <Button layoutX="682.0" layoutY="176.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" text="Cancel" />
+            <Separator layoutY="295.0" prefHeight="0.0" prefWidth="800.0" />
+            <Label layoutX="111.0" layoutY="252.0" prefHeight="31.0" prefWidth="138.0" text="Number oF Dose" />
+            <ComboBox fx:id="vaccineName" layoutX="310.0" layoutY="121.0" prefWidth="150.0" />
+            <ComboBox fx:id="noOfDoses" layoutX="480.0" layoutY="121.0" prefHeight="17.0" prefWidth="127.0" />
+            <Label layoutX="335.0" layoutY="24.0" prefHeight="37.0" prefWidth="290.0" text="Error" />
+            <DatePicker layoutX="632.0" layoutY="121.0" prefHeight="19.0" prefWidth="138.0" />
+            <Separator layoutX="360.0" layoutY="267.0" orientation="VERTICAL" prefHeight="233.0" prefWidth="25.0" />
+            <Label layoutX="504.0" layoutY="252.0" prefHeight="31.0" prefWidth="138.0" text="Available Slots" />
          </children>
       </Pane>
    </children>

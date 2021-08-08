@@ -122,7 +122,6 @@ public void doLogin(ActionEvent event) throws Exception{
        // Parent root = FXMLLoader.load(getClass().getResource("../View/RegisterPage.fxml"));
 
         parent.getChildren().remove(LoginPage);
-
         newLoadedPane =  FXMLLoader.load(getClass().getResource("../Views/RegisterPage.fxml"));
         parent.getChildren().add(newLoadedPane);
     }
