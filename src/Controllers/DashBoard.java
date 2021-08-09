@@ -13,10 +13,7 @@ import javafx.scene.layout.Pane;
 import utils.ConnectionToDataBase;
 
 import java.net.URL;
-import java.util.HashSet;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 
 public class DashBoard implements Initializable {
 
@@ -154,9 +151,6 @@ public class DashBoard implements Initializable {
                 return;
             }
         }
-        else if(vaccineInfo.size() == 2){
-          btn.setDisable(true);
-        }
 
         String vaccineNameStr = vaccineName.getSelectionModel().getSelectedItem();
         if(vaccineNameStr.equals("select Vaccine")){
@@ -170,6 +164,11 @@ public class DashBoard implements Initializable {
             return;
         }
 
+
+        if(errortext.getText().length() > 0){
+            errortext.setText("");
+        }
+
         String dateSelectedByUser =  datePicker.getEditor().getText();
         System.out.println(dateSelectedByUser);
 
@@ -179,14 +178,56 @@ public class DashBoard implements Initializable {
 
         int date =Integer.parseInt(splitDate[1]);
 
-        for(int i=2; i < date / 2; i++){
+        for(int i=2; i <= date; i++){
             if(date % i == 0){
                 divisibleNumber.add(i);
             }
         }
 
+        //2 , 3 , 5, 7 , 11 , 15 , 21
 
+        //24:-  [ 2  3, 4, 6,8,12 , 24]
 
+        //x = 460   y= 335
+
+        ComboBox<String> availableSlots = new ComboBox<>();
+        availableSlots.setValue("Select slot");
+        availableSlots.setLayoutX(460);
+        availableSlots.setLayoutY(335);
+
+        ArrayList<String> availabeSlotsStr = new ArrayList<>();
+
+        String strSlots = "";
+
+        Iterator itr = divisibleNumber.iterator();
+
+        while(itr.hasNext()){
+            Integer i = (Integer)itr.next();
+            strSlots = "";
+           if(i == 2){
+               strSlots =dateSelectedByUser + "  10:00 am";
+           }
+
+          else if(i == 3){
+               strSlots =dateSelectedByUser + "  11:20 am";
+           }
+
+          else if(i == 5){
+               strSlots =dateSelectedByUser + "  14:10 pm";
+           }
+
+           else if(i == 7){
+               strSlots =dateSelectedByUser + "  15:40 pm";
+           }
+           else if(i == 11){
+               strSlots =dateSelectedByUser + "  17:30 pm";
+           }
+           if(strSlots.length() > 1){
+               availableSlots.getItems().add(strSlots);
+           }
+
+        }
+        child.getChildren().add(availableSlots);
 
 
         System.out.println(divisibleNumber);
