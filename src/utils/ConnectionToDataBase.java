@@ -1,11 +1,11 @@
 package utils;
 
 import Entity.User;
+import Entity.VaccineInfo;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConnectionToDataBase {
 
@@ -37,6 +37,7 @@ public class ConnectionToDataBase {
         int retvalue = 0;
         try{
            ps = connection.prepareStatement("insert into users(firstname , lastname , useremail , phonenumber , userpassword) values(?,?,?,?,?)");
+
            ps.setString(1 , user.getFirstname() );
            ps.setString(2 , user.getLastname());
            ps.setString(3 , user.getEmail());
@@ -66,11 +67,9 @@ public class ConnectionToDataBase {
             ps.setString(2, user.getPassword());
 
            ResultSet rs =  ps.executeQuery();
-
-           rs.next();
-
-           if(rs != null){
+           if(rs.next()){
                System.out.println(rs.getString(2));
+               retuser.setId(rs.getInt(1));
                retuser.setFirstname(rs.getString(2));
                retuser.setLastname(rs.getString(3));
                retuser.setEmail(rs.getString(4));
@@ -80,14 +79,60 @@ public class ConnectionToDataBase {
            else{
                return null;
            }
+            connection.close();
+
+        }
+        catch (Exception e){
+
+            System.out.println(e);
+            return null;
+        }
+        finally {
+
+        }
+
+        return retuser;
+    }
+
+
+
+    public List<VaccineInfo> getVaccineInfo(int id){
+
+        PreparedStatement ps = null;
+
+        System.out.println(id);
+
+        ArrayList<VaccineInfo> list = null;
+        try {
+            ps = connection.prepareStatement("select * from vaccineinfo where userid = ?");
+            ps.setInt(1, id);
+
+             ResultSet rs = ps.executeQuery();
+
+            list = new ArrayList<>();
+
+
+            while(rs.next()){
+                VaccineInfo vaccineInfo = new VaccineInfo();
+                vaccineInfo.setId(rs.getInt(1));
+                vaccineInfo.setUserid(rs.getInt(2));
+                vaccineInfo.setTimestamp(rs.getTimestamp(4));
+                vaccineInfo.setDoseName(rs.getString(3));
+                vaccineInfo.setDoseNo(rs.getInt(5));
+                list.add(vaccineInfo);
+            }
+            connection.close();
+
 
         }
         catch (Exception e){
             System.out.println(e);
-            return null;
         }
-        return retuser;
-    }
+
+        return list;
+
+
+        }
 
 
 

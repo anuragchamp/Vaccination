@@ -16,15 +16,15 @@
             <Label fx:id="phonenumber" layoutX="34.0" layoutY="64.0" prefHeight="44.0" prefWidth="153.0" text="enter number" />
             <Button layoutX="682.0" layoutY="27.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="104.0" text="Logout" />
             <Label fx:id="email" layoutX="32.0" layoutY="108.0" prefHeight="44.0" prefWidth="321.0" text="enter email" />
-            <Button layoutX="360.0" layoutY="176.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="120.0" text="Scheduling" />
+            <Button fx:id="btn"  onAction="#scheduling" layoutX="360.0" layoutY="176.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="120.0" text="Scheduling" />
             <Button layoutX="533.0" layoutY="173.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="127.0" text="Re-Scheduling" />
             <Button layoutX="682.0" layoutY="176.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" text="Cancel" />
             <Separator layoutY="295.0" prefHeight="0.0" prefWidth="800.0" />
             <Label layoutX="111.0" layoutY="252.0" prefHeight="31.0" prefWidth="138.0" text="Number oF Dose" />
             <ComboBox fx:id="vaccineName" layoutX="310.0" layoutY="121.0" prefWidth="150.0" />
             <ComboBox fx:id="noOfDoses" layoutX="480.0" layoutY="121.0" prefHeight="17.0" prefWidth="127.0" />
-            <Label layoutX="335.0" layoutY="24.0" prefHeight="37.0" prefWidth="290.0" text="Error" />
-            <DatePicker layoutX="632.0" layoutY="121.0" prefHeight="19.0" prefWidth="138.0" />
+            <Label fx:id="errortext"  layoutX="315.0" layoutY="24.0" prefHeight="37.0" prefWidth="332.0" text="message will come here" textFill="RED" />
+            <DatePicker fx:id="datePicker"  layoutX="632.0" layoutY="121.0" prefHeight="19.0" prefWidth="138.0" />
             <Separator layoutX="360.0" layoutY="267.0" orientation="VERTICAL" prefHeight="233.0" prefWidth="25.0" />
             <Label layoutX="504.0" layoutY="252.0" prefHeight="31.0" prefWidth="138.0" text="Available Slots" />
          </children>

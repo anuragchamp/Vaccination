@@ -4,6 +4,7 @@ import Entity.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -45,6 +46,10 @@ public class RegisterPage implements Initializable {
 
     @FXML
     public Label errorLabel;
+
+    @FXML
+    public Hyperlink loginLink;
+
 
     @FXML
     public void registerUser() throws Exception{
@@ -101,6 +106,11 @@ public class RegisterPage implements Initializable {
 
       //  parent.getChildren().add(newLoadedPane);
 
+    }
+
+    @FXML
+    public void goToLoginPage(){
+        changeToLoginAfterRegisterSuccesfully();
     }
 
     @Override

@@ -1,6 +1,7 @@
 package Controllers;
 
 import Entity.User;
+import Entity.VaccineInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -26,6 +27,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -57,6 +60,8 @@ public class Controller implements Initializable {
 
     @FXML
     public Hyperlink linkToRegisterPage;
+
+
 
 
     Pane newLoadedPane;
@@ -92,14 +97,18 @@ public void doLogin(ActionEvent event) throws Exception{
         user.setPassword(password);
         ConnectionToDataBase cDb = new ConnectionToDataBase();
         cDb.setConnection();
-         User us = cDb.getUser(user);
-         if(us != null) {
+        User us = cDb.getUser(user);
 
+       cDb.setConnection();
+       List<VaccineInfo> list =  cDb.getVaccineInfo(us.getId());
+
+         if(us != null) {
              Node node = (Node) event.getSource();
              Stage stage = (Stage) node.getScene().getWindow();
            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/DashBoard.fxml"));
-             Parent root = loader.load();
+            Parent root = loader.load();
             DashBoard  obj =   loader.getController();
+            obj.setVaccineInfo(list);
             us.setPassword(null);
              obj.setUserDetails(us);
              Scene scene = new Scene(root);

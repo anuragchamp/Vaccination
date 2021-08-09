@@ -3,6 +3,10 @@ package Entity;
 import javafx.fxml.FXML;
 
 public class User {
+
+
+    public int id;
+
     public String firstname;
 
     public String  lastname;
@@ -17,12 +21,21 @@ public class User {
 
     }
 
-    public User(String firstname, String lastname, String email, String password, long phonenumber) {
+    public User(int id ,String firstname, String lastname, String email, String password, long phonenumber) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
         this.phonenumber = phonenumber;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstname() {
@@ -68,7 +81,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "firstname='" + firstname + '\'' +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
